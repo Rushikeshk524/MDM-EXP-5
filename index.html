@@ -4,11 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather app</title>
+    <style>
+body {
+font-family: Arial;
+background: #eef2f3;
+text-align: center;
+}
+.box {
+background: white;
+padding: 20px;
+width: 300px;
+margin: auto;
+box-shadow: 0 0 10px gray;
+}
+</style>
 </head>
 <body>
     <div class="box">
-        <h2>Wether Application</h2>
-        <input type="text" id="city" placeholder="Enter your city">
+        <h2>Weather Application</h2>
+        <input type="text" id="city" placeholder="Enter your city" required>
         <br><br>
         <button onclick="getWeather()">Get Weather</button>
         <p id="result"></p>
@@ -24,9 +38,9 @@
             .then(response => response.json())
             .then(data => {
                 document.getElementById("result").innerHTML = 
-                "Tempreture:" + data.main.temp + "C<br>" +
-                "humidity:" + data.main.humidity + "%<br>" +
-                "condition" + data.weather[0].description;
+                "Tempreture: " + data.main.temp + "F<br>" +
+                "humidity: " + data.main.humidity + "%<br>" +
+                "condition " + data.weather[0].description;
             })
             .catch(() => {
                 document.getElementById("result").innerHTML = "city not found";
